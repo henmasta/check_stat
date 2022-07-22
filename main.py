@@ -1,4 +1,5 @@
 import io
+import os
 import requests
 
 url = requests.get("http://priemn2022.donntu.ru/?local&ipp=1101")
@@ -11,3 +12,4 @@ with open("log.txt", "w", encoding='utf-8') as log:
             if "<!-- <td>" in line or "38" in line or "53" in line or '<td class="text-center">' in line:
                 out = line.replace('<!-- <td>', '').replace('</td> -->', '').replace('<td>', '').replace('</td>', '').replace('<td class="text-center">', '').replace('<div style="text-align: center;"><img src="images/ok_orange.png"/></div>', 'подал')
                 log.write(out)
+os.remove('input.txt')
